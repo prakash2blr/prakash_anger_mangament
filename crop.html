@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-type" content="text/html;charset=utf-8">
+    <title>Koppa Kami madkoli</title>
+    <link rel="stylesheet" type="text/css" href="css/styles_crop.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery.Jcrop.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.Jcrop.js"></script>
+    <script type="text/javascript" src="js/cropsetup.js"></script>
+
+</head>
+
+<body>
+<div id="wrapper">
+    <div class="jc-demo-box">
+
+        <img src="" id="target"  />
+
+        <div id="preview-pane">
+            <div class="preview-container">
+                <img src="" id="crop-image"  class="jcrop-preview" alt="Preview" />
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="form-container">
+    <form id="cropimg" name="cropimg" method="post" action="crop.php" target="_self">
+        <input type="hidden" id="x" name="x">
+        <input type="hidden" id="y" name="y">
+        <input type="hidden" id="w" name="w">
+        <input type="hidden" id="h" name="h">
+        <input type="hidden" id="file_name" name="file_name">
+        <input type="submit" id="submit" value="Crop Image!">
+    </form>
+</div>
+<script type="text/javascript">
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),results = regex.exec(location.search);
+        return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+    var image_name=getParameterByName('file');
+    $('#crop-image').attr('src','uploads/'+image_name);
+    $('#target').attr('src','uploads/'+image_name);
+    $('#file_name').attr('value',image_name);
+</script>
+</body>
+</html>
